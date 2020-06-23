@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DeptStore>
+  <CUSTOMERS>
+    <CUSTOMER CUSTID="1">
+      <PID>60</PID>
+      <NAME>Gene</NAME>
+      <QUANTITY>1</QUANTITY>
+    </CUSTOMER>
+    <CUSTOMER CUSTID="2">
+      <PID>60</PID>
+      <NAME>Gl</NAME>
+      <QUANTITY>4</QUANTITY>
+    </CUSTOMER>
+    <CUSTOMER CUSTID="3">
+      <PID>60</PID>
+      <NAME>Gl</NAME>
+      <QUANTITY>-4</QUANTITY>
+    </CUSTOMER>
+    <CUSTOMER CUSTID="94061">
+      <PID>61</PID>
+      <NAME>Luke Moonwalker</NAME>
+      <QUANTITY>1</QUANTITY>
+    </CUSTOMER>
+    <CUSTOMER CUSTID="95133">
+      <PID>70</PID>
+      <NAME>Darth Marth</NAME>
+      <QUANTITY>7</QUANTITY>
+    </CUSTOMER>
+    <CUSTOMER CUSTID="96711">
+      <PID>60</PID>
+      <NAME>Joe Sith</NAME>
+      <QUANTITY>3</QUANTITY>
+    </CUSTOMER>
+    <CUSTOMER CUSTID="97544">
+      <PID>71</PID>
+      <NAME>Yoda Yoga</NAME>
+      <QUANTITY>1</QUANTITY>
+    </CUSTOMER>
+  </CUSTOMERS>
+  <DEPTS>
+    <DEPT DEPTNO="10">
+      <DNAME>SPORTS</DNAME>
+      <LOC>NEW YORK</LOC>
+    </DEPT>
+    <DEPT DEPTNO="20">
+      <DNAME>HOME</DNAME>
+      <LOC>DALLAS</LOC>
+    </DEPT>
+    <DEPT DEPTNO="30">
+      <DNAME>OUTDOOR</DNAME>
+      <LOC>CHICAGO</LOC>
+    </DEPT>
+    <DEPT DEPTNO="40">
+      <DNAME>CLOTHING</DNAME>
+      <LOC>BOSTON</LOC>
+    </DEPT>
+  </DEPTS>
+  <EMPS>
+    <EMP EMPNO="7369">
+      <ENAME>SMITH</ENAME>
+      <JOB>CLERK</JOB>
+      <MGR>7902</MGR>
+      <SAL>800.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>20</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7499">
+      <ENAME>ALLEN</ENAME>
+      <JOB>SALESMAN</JOB>
+      <MGR>7698</MGR>
+      <SAL>1600.0</SAL>
+      <COMM>300.0</COMM>
+      <DEPTNO>30</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7521">
+      <ENAME>WARD</ENAME>
+      <JOB>SALESMAN</JOB>
+      <MGR>7698</MGR>
+      <SAL>1250.0</SAL>
+      <COMM>500.0</COMM>
+      <DEPTNO>30</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7566">
+      <ENAME>JONES</ENAME>
+      <JOB>MANAGER</JOB>
+      <MGR>7839</MGR>
+      <SAL>2975.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>20</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7654">
+      <ENAME>MARTIN</ENAME>
+      <JOB>SALESMAN</JOB>
+      <MGR>7698</MGR>
+      <SAL>1250.0</SAL>
+      <COMM>1400.0</COMM>
+      <DEPTNO>30</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7698">
+      <ENAME>BLAKE</ENAME>
+      <JOB>MANAGER</JOB>
+      <MGR>7839</MGR>
+      <SAL>2850.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>30</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7782">
+      <ENAME>CLARK</ENAME>
+      <JOB>MANAGER</JOB>
+      <MGR>7839</MGR>
+      <SAL>2450.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>10</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7788">
+      <ENAME>SCOTT</ENAME>
+      <JOB>ANALYST</JOB>
+      <MGR>7566</MGR>
+      <SAL>3000.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>20</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7839">
+      <ENAME>KING</ENAME>
+      <JOB>PRESIDENT</JOB>
+      <MGR>NULL</MGR>
+      <SAL>5000.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>10</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7844">
+      <ENAME>TURNER</ENAME>
+      <JOB>SALESMAN</JOB>
+      <MGR>7698</MGR>
+      <SAL>1500.0</SAL>
+      <COMM>0.0</COMM>
+      <DEPTNO>30</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7876">
+      <ENAME>ADAMS</ENAME>
+      <JOB>CLERK</JOB>
+      <MGR>7788</MGR>
+      <SAL>1100.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>20</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7900">
+      <ENAME>JAMES</ENAME>
+      <JOB>CLERK</JOB>
+      <MGR>7698</MGR>
+      <SAL>950.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>30</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7902">
+      <ENAME>FORD</ENAME>
+      <JOB>ANALYST</JOB>
+      <MGR>7566</MGR>
+      <SAL>3000.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>20</DEPTNO>
+    </EMP>
+    <EMP EMPNO="7934">
+      <ENAME>MILLER</ENAME>
+      <JOB>CLERK</JOB>
+      <MGR>7782</MGR>
+      <SAL>1300.0</SAL>
+      <COMM>NULL</COMM>
+      <DEPTNO>10</DEPTNO>
+    </EMP>
+  </EMPS>
+  <PRODUCTS>
+    <PRODUCT PRODID="30">
+      <PRICE>199.37</PRICE>
+      <MADE_BY>10</MADE_BY>
+      <DESCRIP>CALLAWAY IRONS</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="60">
+      <PRICE>39.99</PRICE>
+      <MADE_BY>10</MADE_BY>
+      <DESCRIP>ACE TENNIS RACKET I</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="61">
+      <PRICE>49.99</PRICE>
+      <MADE_BY>10</MADE_BY>
+      <DESCRIP>ACE TENNIS RACKET II</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="63">
+      <PRICE>8.99</PRICE>
+      <MADE_BY>20</MADE_BY>
+      <DESCRIP>WELCOME MAT</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="70">
+      <PRICE>9.99</PRICE>
+      <MADE_BY>30</MADE_BY>
+      <DESCRIP>TENT STAKES</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="71">
+      <PRICE>24.49</PRICE>
+      <MADE_BY>20</MADE_BY>
+      <DESCRIP>BATH TOWELS</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="76">
+      <PRICE>14.99</PRICE>
+      <MADE_BY>30</MADE_BY>
+      <DESCRIP>SB ENERGY BAR-6 PACK</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="80">
+      <PRICE>70.19</PRICE>
+      <MADE_BY>30</MADE_BY>
+      <DESCRIP>HIKING BOOTS</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="81">
+      <PRICE>12.99</PRICE>
+      <MADE_BY>30</MADE_BY>
+      <DESCRIP>SB VITA SNACK-6 PACK</DESCRIP>
+    </PRODUCT>
+    <PRODUCT PRODID="90">
+      <PRICE>19.99</PRICE>
+      <MADE_BY>40</MADE_BY>
+      <DESCRIP>TENNIS SHIRT</DESCRIP>
+    </PRODUCT>
+  </PRODUCTS>
+</DeptStore>
