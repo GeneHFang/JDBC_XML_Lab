@@ -1,6 +1,7 @@
 
 package ser322;
 
+//Imports
 import java.sql.*;
 import java.util.ArrayList;
 import java.io.File;
@@ -23,7 +24,16 @@ import org.w3c.dom.Element;
 
 
 /**
+ * JDBCLab Activity 1 & Activity 2 pt 1
+ * @author Gene H. Li - ghli1
  * 
+ * Command line Java program that executes:
+ *  (from Activity 1):
+ *          - a Select query that lists Employee IDs, Employee Names, together with their Dept names
+ *          - a Select query that lists Department name, customer name, and total amount spent in purchase given a department number
+ *          - an Insert query that adds a new Customer into the database through product purchase
+ *  (from Activity 2):
+ *          - an export of current database to an indented .xml file to the project directory 
  */
 
 
@@ -31,24 +41,23 @@ public class JdbcLab {
     public static void main(String args[]){
         //The data
         ResultSet r = null, r1 = null, r2 = null;
-        //The query 
+        //The query(s)
         Statement s = null, s1 = null, s2 = null;
         PreparedStatement ps = null;
         //The socket connection
         Connection c = null;
-
         
         String _url, _user, _pwd, _driver;
-
-        String tableBreak = "\n";
-        for (int i = 0 ; i < 45 ; i++){
-            tableBreak+="-";
-        }
-
         _url = args[0];
         _user = args[1];
         _pwd = args[2];
         _driver = args[3];
+
+        //Table line for console output
+        String tableBreak = "\n";
+        for (int i = 0 ; i < 45 ; i++){
+            tableBreak+="-";
+        }
         
 
         try {
@@ -74,7 +83,7 @@ public class JdbcLab {
                     break;
                 
                 case "query2":
-                    query = "select dname, name, round(price*quantity,2) as amountspent from (customer join product on prodid=pid) join dept on made_by=deptno where dname=?;";
+                    query = "select dname, name, round(price*quantity,2) as amountspent from (customer join product on prodid=pid) join dept on made_by=deptno where deptno=?;";
                     ps = c.prepareStatement(query);
                     ps.setString(1,args[5]);
                     r = ps.executeQuery();
@@ -83,7 +92,6 @@ public class JdbcLab {
                     while (r.next()){
                         System.out.format("%15s%20s%10s", r.getString(1)+"|",r.getString(2)+"|"," "+r.getFloat(3));
                         System.out.println("");
-                        // System.out.println(r.getString(1)+" | "+r.getString(2)+" | "+r.getFloat(3));
                     }
                     break;
                 
@@ -106,6 +114,7 @@ public class JdbcLab {
                         System.out.println(numberformat.getLocalizedMessage());
                         System.out.println("Please ensure you follow the schema for customer. Values should be of type, in order, (INT INT STRING INT)");
                     }
+                    break;
 
                 case "export":
 
@@ -113,7 +122,7 @@ public class JdbcLab {
                         DocumentBuilderFactory docf = DocumentBuilderFactory.newInstance();
                         DocumentBuilder docb = docf.newDocumentBuilder();
 
-                        //Root
+                        //Root (hard coded as DeptStore)
                         Document doc = docb.newDocument();
                         Element root = doc.createElement("DeptStore");
                         doc.appendChild(root);
@@ -121,54 +130,62 @@ public class JdbcLab {
                         query = "show tables;";
                         r = s.executeQuery(query);
                         
-                        
-                        System.out.println("here in export");
-                        
+                        //debugging
+                        // System.out.println("here in export");
                         
                         String subQuery = "";
                         String subQuery2 = "";
-                        while (r.next()){
-                            
-                        System.out.println("here before making tables");
                         
-                        // tables.add(r.getString(1));
-                        String table = r.getString(1).toUpperCase();
-                        System.out.println(table);
+                        //Iterate through list of table names, creating XML elements for each one
+                        while (r.next()){
+                            //debugging    
+                            // System.out.println("here before making tables");
+                        
+                            String table = r.getString(1).toUpperCase();
                             String tablePlural = table+"S";
                             Element tableElement = doc.createElement(tablePlural);
                             root.appendChild(tableElement);
                             subQuery = "show columns from ";
+                            
+                            //Originally tried using a PreparedStatement, but had issues getting Table and Column names without extraneous '' character
                             s1 = c.createStatement();
                             r1 = s1.executeQuery(subQuery+table+";");
                             // ps = c.prepareStatement(subQuery);
                             // ps.setString(1,table);
-                            ArrayList<String> columns = new ArrayList<>();
-
                             // r1 = ps.executeQuery();
                             
+                            //column names for xml export
+                            ArrayList<String> columns = new ArrayList<>();
                             
-                        System.out.println("here before making columns");
+                            //debugging    
+                            // System.out.println("here before making columns");
+                            
+                            //Iterate through list of column names and placing them inside an ArrayList
                             while (r1.next()){
                                 columns.add(r1.getString(1));
                             }
                             int columnNum = columns.size();
 
+                            //Same problem as with line 149 with PreparedStatements
                             subQuery2 = "select * from ";
                             s2 = c.createStatement();
                             r2 = s2.executeQuery(subQuery2+table+";");
                             // ps1 = c.prepareStatement(subQuery2);
                             // ps1.setString(1, table);
-
                             // r2 = ps1.executeQuery();
                             
-                            
-                        System.out.println("here before making elements");
+                            //debugging
+                            // System.out.println("here before making elements");  
+
+                            //Iterate through all rows of current table and add elements/attributes to XML table
                             while (r2.next()){
                                 Element row = doc.createElement(table);
                                 tableElement.appendChild(row);
                                 row.setAttribute(columns.get(0), r2.getString(1));
                                 for(int i = 1; i < columnNum ; i++){
                                     Element attribute = doc.createElement(columns.get(i));
+                                    
+                                    //null values changed to String "NULL" to avoid parsing errors when building XML file 
                                     if (r2.getString(i+1) == null) {
                                         attribute.appendChild(doc.createTextNode("NULL"));
                                     }
@@ -179,23 +196,22 @@ public class JdbcLab {
                                     row.appendChild(attribute);
                                 }
                             }
-                        System.out.println("here after one table done");
+                            //debugging
+                            // System.out.println("here after one table done");
                         }
-                        System.out.println("here after db is done");
+                        //debugging    
+                        // System.out.println("here after db is done");
+
                         TransformerFactory hasbro = TransformerFactory.newInstance();
                         Transformer starScream = hasbro.newTransformer();
                         
+                        //Indenting for readability
                         starScream.setOutputProperty(OutputKeys.INDENT, "yes");
                         starScream.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
                         DOMSource src = new DOMSource(doc);
                         String filename = args[5]+".xml";
-                        // System.out.println(doc.getFirstChild().getFirstChild().getFirstChild().getFirstChild().getFirstChild().getTextContent());
-
                         StreamResult res = new StreamResult(new File(filename));
-
-                        
-
                         starScream.transform(src, res);
 
                         System.out.println("Success");
@@ -206,7 +222,7 @@ public class JdbcLab {
                     catch (TransformerException tfe){
                         tfe.printStackTrace();
                     }
-                        
+                    break;
             }
         }
         catch (ArrayIndexOutOfBoundsException aie){
@@ -236,9 +252,4 @@ public class JdbcLab {
             }
         }
     }
-
-    /*Debugging */
-    // static void print(String args) {
-    //     System.out.println("Connection Established; Command " +args);
-    // }
 }
